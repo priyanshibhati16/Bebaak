@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEBAAK (बेबाक) | South Asian Streetwear Atelier</title>
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* -------------------------------------------------------------
+       PALETTE DEFINITION (Crimson, Mahogany, Bronze, Olive, Evergreen)
+       ------------------------------------------------------------- */
+    :root {
+      --deep-crimson: #6B0F1A;
+      --mahogany: #38040E;
+      --bronze: #B38044;
+      --bronze-glow: rgba(179, 128, 68, 0.25);
+      --antique-gold: #C9A86A;
+      --dusty-olive: #5B6244;
+      --evergreen: #142820;
+      --forest-void: #09120E;
+      --earth-charcoal: #0F090A;
+      --bone-ivory: #F4EFE6;
+      --muted-khadi: #CBC3B3;
+      
+      --font-display: 'Cinzel', serif;
+      --font-editorial: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-code: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--earth-charcoal);
+      color: var(--bone-ivory);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      selection-background-color: var(--deep-crimson);
+      selection-color: var(--bone-ivory);
+    }
+
+    ::selection {
+      background: var(--deep-crimson);
+      color: var(--bone-ivory);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Atmospheric ambient background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(107, 15, 26, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(20, 40, 32, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(56, 4, 14, 0.4) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* -------------------------------------------------------------
+       NAVIGATION
+       ------------------------------------------------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 9, 10, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(179, 128, 68, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      letter-spacing: 0.35em;
+      font-weight: 900;
+      color: var(--bone-ivory);
+      text-transform: uppercase;
+    }
+
+    .brand-devanagari {
+      font-family: var(--font-editorial);
+      color: var(--bronze);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--muted-khadi);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--bronze);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--bronze);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .location-tag {
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      color: var(--dusty-olive);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--dusty-olive);
+      padding: 0.35rem 0.8rem;
+    }
+
+    /* -------------------------------------------------------------
+       HERO / MANIFESTO OPENING
+       ------------------------------------------------------------- */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 2.5rem;
+      max-width: 1380px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-meta {
+      font-family: var(--font-code);
+      font-size: 0.8rem;
+      color: var(--bronze);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-meta::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--bronze);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+      line-height: 0.95;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--bone-ivory);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title .crimson-accent {
+      color: var(--deep-crimson);
+      display: block;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: flex-end;
+      border-top: 1px solid rgba(179, 128, 68, 0.2);
+      padding-top: 2.5rem;
+    }
+
+    .hero-manifesto {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.25rem, 2vw, 1.85rem);
+      color: var(--muted-khadi);
+      line-height: 1.4;
+    }
+
+    .hero-manifesto strong {
+      color: var(--bronze);
+      font-weight: 600;
+    }
+
+    .hero-aside {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--dusty-olive);
+      line-height: 1.8;
+      border-left: 1px solid var(--dusty-olive);
+      padding-left: 1.5rem;
+    }
+
+    /* -------------------------------------------------------------
+       MARQUEE TICKER (Pure CSS)
+       ------------------------------------------------------------- */
+    .ticker-bar {
+      background: var(--mahogany);
+      border-top: 1px solid rgba(179, 128, 68, 0.3);
+      border-bottom: 1px solid rgba(179, 128, 68, 0.3);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.9rem 0;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 3rem;
+      animation: tickerRun 28s linear infinite;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--antique-gold);
+    }
+
+    .ticker-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .ticker-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--deep-crimson);
+      border-radius: 50%;
+    }
+
+    @keyframes tickerRun {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* -------------------------------------------------------------
+       PHILOSOPHICAL TREATISE
+       ------------------------------------------------------------- */
+    .philosophy-banner {
+      background: linear-gradient(135deg, var(--forest-void) 0%, var(--earth-charcoal) 60%, var(--mahogany) 100%);
+      border-top: 1px solid rgba(179, 128, 68, 0.25);
+      border-bottom: 1px solid rgba(179, 128, 68, 0.25);
+      padding: 7rem 2.5rem;
+    }
+
+    .philosophy-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .devanagari-crest {
+      font-family: var(--font-editorial);
+      font-size: 3rem;
+      color: var(--bronze);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      font-style: italic;
+      color: var(--bone-ivory);
+      margin-bottom: 2.5rem;
+    }
+
+    .philosophy-quote span.crimson {
+      color: #D64550;
+      font-style: normal;
+      font-family: var(--font-display);
+    }
+
+    .philosophy-quote span.olive {
+      color: #929D6E;
+      font-style: normal;
+    }
+
+    .philosophy-lead {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--muted-khadi);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION WRAPPERS & LOOM CODEX
+       ------------------------------------------------------------- */
+    .section-wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 7rem 2.5rem;
+    }
+
+    .section-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid rgba(179, 128, 68, 0.2);
+      padding-bottom: 1.5rem;
+    }
+
+    .section-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .section-count {
+      font-family: var(--font-code);
+      font-size: 0.8rem;
+      color: var(--bronze);
+      letter-spacing: 0.2em;
+    }
+
+    .textile-table-wrapper {
+      margin-top: 2rem;
+      border: 1px solid rgba(179, 128, 68, 0.2);
+      background: rgba(15, 9, 10, 0.6);
+    }
+
+    .textile-row {
+      display: grid;
+      grid-template-columns: 200px 180px 1fr 180px;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid rgba(179, 128, 68, 0.12);
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .textile-row:last-child {
+      border-bottom: none;
+    }
+
+    .textile-row:hover {
+      background: rgba(107, 15, 26, 0.08);
+    }
+
+    .textile-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bone-ivory);
+    }
+
+    .textile-swatch {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--muted-khadi);
+    }
+
+    .swatch-circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .swatch-crimson   { background: var(--deep-crimson); }
+    .swatch-mahogany  { background: var(--mahogany); }
+    .swatch-bronze    { background: var(--bronze); }
+    .swatch-olive     { background: var(--dusty-olive); }
+    .swatch-evergreen { background: var(--evergreen); }
+
+    .textile-desc {
+      font-family: var(--font-editorial);
+      font-size: 1.15rem;
+      color: #AFA89B;
+    }
+
+    .textile-origin {
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      color: var(--bronze);
+      text-align: right;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* -------------------------------------------------------------
+       ATELIER PRINCIPLES
+       ------------------------------------------------------------- */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .principle-box {
+      border-top: 1px solid var(--bronze);
+      padding-top: 1.5rem;
+    }
+
+    .principle-num {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--deep-crimson);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .principle-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--bone-ivory);
+    }
+
+    .principle-text {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--muted-khadi);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    footer {
+      border-top: 1px solid rgba(179, 128, 68, 0.25);
+      background: #080506;
+      padding: 5rem 2.5rem 2.5rem;
+    }
+
+    .footer-top {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 5rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand h4 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-family: var(--font-editorial);
+      font-size: 1.25rem;
+      color: var(--muted-khadi);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--bronze);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: var(--muted-khadi);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-bottom {
+      max-width: 1380px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      color: var(--dusty-olive);
+      letter-spacing: 0.15em;
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE BREAKPOINTS
+       ------------------------------------------------------------- */
+    @media (max-width: 1100px) {
+      .textile-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .textile-desc {
+        grid-column: span 2;
+      }
+      .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .location-tag {
+        display: none;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .section-intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .textile-row {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1rem;
+      }
+      .textile-desc {
+        grid-column: span 1;
+      }
+      .textile-origin {
+        text-align: left;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand-mark">
+        <span class="brand-logo">BEBAAK</span>
+        <span class="brand-devanagari">बेबाक</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#manifesto">Manifesto</a>
+        <a href="#textiles">Textiles</a>
+        <a href="#atelier">Atelier</a>
+      </nav>
+      <div class="location-tag">New Delhi • 28°36'N</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-meta">Series 07 // Heritage Reclaimed</div>
+      <h1 class="hero-title">
+        Rooted in soil. <br>
+        <span class="crimson-accent">woven without apology.</span>
+        Defying convention.
+      </h1>
+
+      <div class="hero-grid">
+        <p class="hero-manifesto">
+          <strong>BEBAAK</strong> is an Indian contemporary atelier operating at the intersection of classical subcontinental drapes, <strong>heavyweight organic loomed textiles</strong>, and brutalist street silhouettes. No ornament for ornament’s sake. Only structure, shade, and sovereign poise.
+        </p>
+        <div class="hero-aside">
+          DOCUMENT NO. BBK-2026<br>
+          WARP: CRUSHED MAHOGANY COTTON<br>
+          WEFT: RAW BRONZE FIBRE<br>
+          FINISH: COLD INDIGO &amp; MADDER ROOT
+        </div>
+      </div>
+    </section>
+
+    <!-- Scrolling Ticker -->
+    <div class="ticker-bar">
+      <div class="ticker-track">
+        <span>KHADI WEIGHT: 520 GSM <div class="ticker-dot"></div></span>
+        <span>SHADES: MAJENTA, BRONZE, FORESTS OF NILGIRI <div class="ticker-dot"></div></span>
+        <span>RAW LOOM SLUB <div class="ticker-dot"></div></span>
+        <span>UNBOTHERED GEOMETRY <div class="ticker-dot"></div></span>
+        <span>CHALTI PHIRTI TAAQAT <div class="ticker-dot"></div></span>
+        <span>KHADI WEIGHT: 520 GSM <div class="ticker-dot"></div></span>
+        <span>SHADES: MAJENTA, BRONZE, FORESTS OF NILGIRI <div class="ticker-dot"></div></span>
+        <span>RAW LOOM SLUB <div class="ticker-dot"></div></span>
+        <span>UNBOTHERED GEOMETRY <div class="ticker-dot"></div></span>
+        <span>CHALTI PHIRTI TAAQAT <div class="ticker-dot"></div></span>
+      </div>
+    </div>
+
+    <!-- Philosophy Banner -->
+    <section class="philosophy-banner" id="manifesto">
+      <div class="philosophy-inner">
+        <div class="devanagari-crest">सत्य • साहस • सौंदर्य</div>
+        <blockquote class="philosophy-quote">
+          “We refuse neon frivolity. We return to <span class="crimson">blood crimson</span>, ancient <span class="olive">evergreen</span>, and the enduring resilience of the handloom.”
+        </blockquote>
+        <p class="philosophy-lead">
+          Streetwear in the subcontinent was never meant to be a derivative photocopy of Western skate culture. Streetwear here was born in the bazaars, the mill districts of Ahmedabad and Kanpur, the weavers’ colonies of Varanasi, and the defiance of everyday folks claiming their space on packed city avenues.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section: Textile Codex -->
+    <section class="section-wrap" id="textiles">
+      <div class="section-intro">
+        <div>
+          <h2 class="section-headline">The Loom Codex</h2>
+          <p style="font-family: var(--font-editorial); color: var(--muted-khadi); font-size: 1.25rem;">
+            Technical breakdown of natural dye reactions and yarn densities
+          </p>
+        </div>
+        <div class="section-count">VOLUME IV</div>
+      </div>
+
+      <div class="textile-table-wrapper">
+        <div class="textile-row">
+          <div class="textile-name">Surkh Khadi</div>
+          <div>
+        
+            
+          </div>
+          <div class="textile-desc">Fermented wild madder root steeped for 14 days in copper vessels, producing an indelible, living wine hue.</div>
+          <div class="textile-origin">Kutch, Gujarat</div>
+        </div>
+
+        <div class="textile-row">
+          <div class="textile-name">Kaasht Twill</div>
+          <div>
+            
+            
+          </div>
+          <div class="textile-desc">Acacia bark tannins blended with toasted iron liquor to produce a deep earthen mahogany sheen.</div>
+          <div class="textile-origin">Maheshwar, MP</div>
+        </div>
+
+        <div class="textile-row">
+          <div class="textile-name">Kansa Hardware</div>
+          <div>
+            
+            
+          </div>
+          <div class="textile-desc">Hand-cast unpolished bell metal used for rivets, toggles, cord ends, and custom modular buckles.</div>
+          <div class="textile-origin">Moradabad, UP</div>
+        </div>
+
+        <div class="textile-row">
+          <div class="textile-name">Palash Slub</div>
+          <div>
+            
+            
+          </div>
+          <div class="textile-desc">Dried flame-of-the-forest flowers coupled with iron water mordants to render an understated, smoky military green.</div>
+          <div class="textile-origin">Bagru, Rajasthan</div>
+        </div>
+
+        <div class="textile-row">
+          <div class="textile-name">Neelambari Dense</div>
+          <div>
+            
+            
+          </div>
+          <div class="textile-desc">Deep indigo vats overlaid with myrobalan seed oil, resulting in a dark pine tone that refuses to fade.</div>
+          <div class="textile-origin">Murshidabad, WB</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Atelier Ethos -->
+    <section class="section-wrap" id="atelier" style="padding-top: 0;">
+      <div class="section-intro">
+        <div>
+          <h2 class="section-headline">Atelier Foundations</h2>
+          <p style="font-family: var(--font-editorial); color: var(--muted-khadi); font-size: 1.25rem;">
+            How BEBAAK constructs each piece in limited annual volumes
+          </p>
+        </div>
+        <div class="section-count">STANDARDS</div>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-box">
+          <span class="principle-num">01 / WEIGHT &amp; HONESTY</span>
+          <h3 class="principle-title">Heavyweight Integrity</h3>
+          <p class="principle-text">
+            We do not manufacture disposable featherweight clothing. Every garment carries tactile weight—ranging from 360 GSM to 540 GSM—designed to withstand decades of friction, movement, and atmospheric wear.
+          </p>
+        </div>
+
+        <div class="principle-box">
+          <span class="principle-num">02 / SUBCONTINENTAL DRAPE</span>
+          <h3 class="principle-title">Anatomical Sovereignty</h3>
+          <p class="principle-text">
+            Western tailoring constricts; subcontinental clothing drapes. We design silhouettes that allow air to circulate between textile and skin, using pleated volume and fallen shoulders.
+          </p>
+        </div>
+
+        <div class="principle-box">
+          <span class="principle-num">03 / LIVING COLORS</span>
+          <h3 class="principle-title">Earthen Patina</h3>
+          <p class="principle-text">
+            Our dyes are alive. Over years of wear, the deep crimsons, bronzes, and evergreens develop an individual patina shaped by your city’s climate, sunshine, and wash cycles.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>BEBAAK <span style="color: var(--bronze); font-family: var(--font-editorial); font-size: 1.4rem;">बेबाक</span></h4>
+        <p>
+          An independent design atelier dedicated to Indian materiality, radical silhouettes, and dark subcontinental palettes. Hand-loomed, precision-cut, and unapologetic.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>STUDIO LOCATIONS</h5>
+        <ul>
+          <li>Hauz Khas Village, New Delhi</li>
+          <li>Fort Archive, Mumbai</li>
+          <li>Indiranagar Lab, Bengaluru</li>
+          <li>Kala Ghoda Guild, Mumbai</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>DISPATCH &amp; CODEX</h5>
+        <ul>
+          <li>The Loom Registry</li>
+          <li>Natural Mordant Archive</li>
+          <li>Annual Volume Reports</li>
+          <li>Contact: studio@bebaak.in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 BEBAAK CLOTHING ATELIER. ALL DESIGNS REGISTERED.</div>
+      <div>NO COMMERCIAL SHOPPING • ARCHIVAL CURATION ONLY</div>
+    </div>
+  </footer>
+
+</body>
+</html>
